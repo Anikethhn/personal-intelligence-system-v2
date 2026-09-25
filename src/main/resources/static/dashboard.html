@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NORA | Dashboard</title>
+
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                N
+            </div>
+
+            <h2>
+                NORA
+            </h2>
+
+        </div>
+
+
+        <!-- =====================================
+             NAVIGATION
+             ===================================== -->
+
+        <nav class="nav">
+
+            <!-- DASHBOARD -->
+
+            <a
+                    href="/dashboard.html"
+                    class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-label">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- TASKS -->
+
+            <a
+                    href="/tasks.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ✓
+                </span>
+
+                <span class="nav-label">
+                    Tasks
+                </span>
+
+            </a>
+
+
+            <!-- EXPENSES -->
+
+            <a
+                    href="/expenses.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ₹
+                </span>
+
+                <span class="nav-label">
+                    Expenses
+                </span>
+
+            </a>
+
+
+            <!-- SUBSCRIPTIONS -->
+
+            <a
+                    href="/subscription.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ↻
+                </span>
+
+                <span class="nav-label">
+                    Subscriptions
+                </span>
+
+            </a>
+
+
+            <!-- DOCUMENTS -->
+
+            <a
+                    href="/documents.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ▣
+                </span>
+
+                <span class="nav-label">
+                    Documents
+                </span>
+
+            </a>
+
+
+            <!-- DECISIONS -->
+
+            <a
+                    href="/decisions.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ◇
+                </span>
+
+                <span class="nav-label">
+                    Decisions
+                </span>
+
+            </a>
+
+
+            <!-- INSIGHTS -->
+
+            <a
+                    href="/Insight.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ✦
+                </span>
+
+                <span class="nav-label">
+                    Insights
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- =====================================
+             USER PROFILE
+             ===================================== -->
+
+        <div class="user-profile">
+
+            <div class="avatar">
+                N
+            </div>
+
+            <div>
+
+                <strong>
+                    Personal Account
+                </strong>
+
+                <small>
+                    NORA User
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="main">
+
+
+        <!-- =====================================
+             TOP BAR
+             ===================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Your personal intelligence at a glance
+                </p>
+
+            </div>
+
+
+            <!-- =================================
+                 TOP ACTIONS
+                 ================================= -->
+
+            <div class="top-actions">
+
+
+                <!-- NOTIFICATION BELL -->
+
+                <div class="notification-header-wrapper">
+
+                    <button
+                            id="notificationBell"
+                            class="notification-bell"
+                            type="button"
+                            aria-label="Notifications"
+                    >
+
+                        <span class="bell-icon">
+                            🔔
+                        </span>
+
+                        <span
+                                id="notificationBellCount"
+                                class="notification-bell-count"
+                                style="display: none;"
+                        >
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <!-- NOTIFICATION DROPDOWN -->
+
+                    <div
+                            id="notificationDropdown"
+                            class="notification-dropdown"
+                            style="display: none;"
+                    >
+
+                        <div class="notification-dropdown-header">
+
+                            <strong>
+                                Notifications
+                            </strong>
+
+                            <span
+                                    id="notificationDropdownCount"
+                                    class="notification-dropdown-count"
+                            >
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <div
+                                id="notificationPreview"
+                                class="notification-preview"
+                        >
+
+                            <div class="notification-preview-loading">
+                                Loading notifications...
+                            </div>
+
+                        </div>
+
+
+                        <div class="notification-dropdown-footer">
+
+                            <a href="/notifications.html">
+                                View all notifications
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOGOUT -->
+
+                <button
+                        id="logoutButton"
+                        class="top-button"
+                        type="button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             INTELLIGENCE CARD
+             ===================================== -->
+
+        <section class="intelligence-card">
+
+            <div class="intelligence-content">
+
+                <div class="eyebrow">
+                    PERSONAL INTELLIGENCE
+                </div>
+
+                <h2>
+                    Your day, intelligently organized.
+                </h2>
+
+                <p>
+                    NORA brings together your tasks, expenses,
+                    decisions and personal information to help
+                    you understand what matters most.
+                </p>
+
+            </div>
+
+
+            <div class="intelligence-orb"></div>
+
+        </section>
+
+
+        <!-- =====================================
+             STAT CARDS
+             ===================================== -->
+
+        <section class="stats-grid">
+
+
+            <!-- PENDING TASKS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ✓
+                </div>
+
+                <h3 id="pendingTasks">
+                    0
+                </h3>
+
+                <p>
+                    Pending Tasks
+                </p>
+
+            </div>
+
+
+            <!-- COMPLETED TASKS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <h3 id="completedTasks">
+                    0
+                </h3>
+
+                <p>
+                    Completed Tasks
+                </p>
+
+            </div>
+
+
+            <!-- HIGH PRIORITY TASKS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    !
+                </div>
+
+                <h3 id="highPriorityTasks">
+                    0
+                </h3>
+
+                <p>
+                    High Priority
+                </p>
+
+            </div>
+
+
+            <!-- TOTAL TASKS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon cyan">
+                    #
+                </div>
+
+                <h3 id="totalTasks">
+                    0
+                </h3>
+
+                <p>
+                    Total Tasks
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             DASHBOARD CONTENT
+             ===================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- =================================
+                 PRIORITY TASKS
+                 ================================= -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Priority Tasks
+                    </h3>
+
+                    <a href="/tasks.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div id="dashboardTasks">
+
+                    <div class="empty-state">
+                        Loading tasks...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 MONTHLY SPENDING
+                 ================================= -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Monthly Spending
+                    </h3>
+
+                    <a href="/expenses.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div
+                        id="dashboardExpense"
+                        class="expense-total"
+                >
+                    ₹0
+                </div>
+
+
+                <div class="expense-bar">
+
+                    <span style="width: 0%"></span>
+
+                </div>
+
+
+                <div class="category-row">
+
+                    <span>
+                        Food
+                    </span>
+
+                    <strong>
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="category-row">
+
+                    <span>
+                        Transport
+                    </span>
+
+                    <strong>
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="category-row">
+
+                    <span>
+                        Shopping
+                    </span>
+
+                    <strong>
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="category-row">
+
+                    <span>
+                        Other
+                    </span>
+
+                    <strong>
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             NORA INTELLIGENCE INSIGHTS
+             ===================================== -->
+
+        <section
+                class="panel"
+                style="margin-top:18px;"
+        >
+
+            <div class="panel-header">
+
+                <h3>
+                    Intelligence Insights
+                </h3>
+
+                <span class="eyebrow">
+                    NORA AI
+                </span>
+
+            </div>
+
+
+            <!-- INSIGHT 1 -->
+
+            <div class="insight-item">
+
+                <div class="insight-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <strong>
+                        Your intelligence center is ready
+                    </strong>
+
+                    <p>
+                        Add tasks and expenses to begin
+                        generating personalized insights.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- INSIGHT 2 -->
+
+            <div class="insight-item">
+
+                <div class="insight-icon">
+                    ◇
+                </div>
+
+                <div>
+
+                    <strong>
+                        Stay organized
+                    </strong>
+
+                    <p>
+                        Use NORA to keep your important
+                        personal information in one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     DASHBOARD JAVASCRIPT
+     ========================================= -->
+
+<script src="/js/dashboard.js"></script>
+
+<script src="/js/notification-bell.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NORA | Expenses</title>
+
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                N
+            </div>
+
+            <h2>
+                NORA
+            </h2>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="nav">
+
+            <!-- DASHBOARD -->
+
+            <a
+                    href="/dashboard.html"
+                    class="nav-item"
+            >
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-label">
+                    Dashboard
+                </span>
+            </a>
+
+
+            <!-- TASKS -->
+
+            <a
+                    href="/tasks.html"
+                    class="nav-item"
+            >
+                <span class="nav-icon">
+                    ✓
+                </span>
+
+                <span class="nav-label">
+                    Tasks
+                </span>
+            </a>
+
+
+            <!-- EXPENSES -->
+
+            <a
+                    href="/expenses.html"
+                    class="nav-item active"
+            >
+                <span class="nav-icon">
+                    ₹
+                </span>
+
+                <span class="nav-label">
+                    Expenses
+                </span>
+            </a>
+
+
+            <!-- SUBSCRIPTIONS -->
+
+            <a
+                    href="/subscription.html"
+                    class="nav-item"
+            >
+                <span class="nav-icon">
+                    ↻
+                </span>
+
+                <span class="nav-label">
+                    Subscriptions
+                </span>
+            </a>
+
+
+            <!-- DOCUMENTS -->
+
+            <a
+                    href="/documents.html"
+                    class="nav-item"
+            >
+                <span class="nav-icon">
+                    ▣
+                </span>
+
+                <span class="nav-label">
+                    Documents
+                </span>
+            </a>
+
+
+            <!-- DECISIONS -->
+
+            <a
+                    href="/decisions.html"
+                    class="nav-item"
+            >
+                <span class="nav-icon">
+                    ◇
+                </span>
+
+                <span class="nav-label">
+                    Decisions
+                </span>
+            </a>
+
+
+            <!-- INSIGHTS -->
+
+            <a
+                    href="#"
+                    class="nav-item"
+            >
+                <span class="nav-icon">
+                    ✦
+                </span>
+
+                <span class="nav-label">
+                    Insights
+                </span>
+            </a>
+
+        </nav>
+
+
+        <!-- USER -->
+
+        <div class="user-profile">
+
+            <div class="avatar">
+                N
+            </div>
+
+            <div>
+
+                <strong>
+                    Personal Account
+                </strong>
+
+                <small>
+                    NORA User
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Expenses
+                </h1>
+
+                <p>
+                    Track and manage your personal expenses
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                        id="logoutButton"
+                        class="top-button"
+                        type="button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             EXPENSE SUMMARY
+             ========================================= -->
+
+        <section class="stats-grid">
+
+
+            <!-- TOTAL EXPENSE -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ₹
+                </div>
+
+                <h3 id="totalExpense">
+                    ₹0.00
+                </h3>
+
+                <p>
+                    Total Expense
+                </p>
+
+            </div>
+
+
+            <!-- TRANSACTIONS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    #
+                </div>
+
+                <h3 id="transactionCount">
+                    0
+                </h3>
+
+                <p>
+                    Transactions
+                </p>
+
+            </div>
+
+
+            <!-- AVERAGE -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    ₹
+                </div>
+
+                <h3 id="averageExpense">
+                    ₹0.00
+                </h3>
+
+                <p>
+                    Average Expense
+                </p>
+
+            </div>
+
+
+            <!-- MONTHLY -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    ↗
+                </div>
+
+                <h3 id="monthlyExpense">
+                    ₹0.00
+                </h3>
+
+                <p>
+                    Monthly Expense
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             ADD / EDIT EXPENSE
+             ========================================= -->
+
+        <section class="content-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2 id="formTitle">
+                        Add Expense
+                    </h2>
+
+                    <p>
+                        Record a new personal expense
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="expenseForm">
+
+
+                <!-- AMOUNT -->
+
+                <div class="form-group">
+
+                    <label for="amount">
+                        Amount *
+                    </label>
+
+                    <input
+                            type="number"
+                            id="amount"
+                            name="amount"
+                            min="0"
+                            step="0.01"
+                            required
+                            placeholder="Enter amount"
+                    >
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category *
+                    </label>
+
+                    <select
+                            id="category"
+                            name="category"
+                            required
+                    >
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="Food">
+                            Food
+                        </option>
+
+                        <option value="Transport">
+                            Transport
+                        </option>
+
+                        <option value="Shopping">
+                            Shopping
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <input
+                            type="text"
+                            id="description"
+                            name="description"
+                            maxlength="255"
+                            placeholder="Enter description"
+                    >
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="form-group">
+
+                    <label for="expenseDate">
+                        Date *
+                    </label>
+
+                    <input
+                            type="date"
+                            id="expenseDate"
+                            name="expenseDate"
+                            required
+                    >
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="form-actions">
+
+                    <button
+                            type="button"
+                            id="cancelEditButton"
+                            style="display:none;"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                            type="submit"
+                            class="btn-primary"
+                            id="addExpenseButton"
+                    >
+                        Add Expense
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================================
+             EXPENSE HISTORY
+             ========================================= -->
+
+        <section class="content-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Expense History
+                    </h2>
+
+                    <p>
+                        View and manage your recorded expenses
+                    </p>
+
+                </div>
+
+
+                <!-- CATEGORY FILTER -->
+
+                <div class="filter-container">
+
+                    <select id="categoryFilter">
+
+                        <option value="ALL">
+                            All Categories
+                        </option>
+
+                        <option value="Food">
+                            Food
+                        </option>
+
+                        <option value="Transport">
+                            Transport
+                        </option>
+
+                        <option value="Shopping">
+                            Shopping
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOADING -->
+
+            <div
+                    id="loading"
+                    class="loading"
+            >
+                Loading expenses...
+            </div>
+
+
+            <!-- EXPENSE CONTAINER -->
+
+            <div
+                    id="expensesContainer"
+                    class="expenses-container"
+            ></div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                    id="emptyState"
+                    class="empty-state"
+                    style="display:none;"
+            >
+
+                <h3>
+                    No expenses found
+                </h3>
+
+                <p>
+                    Add your first expense to start tracking your spending.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+
+<script src="/js/expenses.js"></script>
+
+
+</body>
+
+</html>

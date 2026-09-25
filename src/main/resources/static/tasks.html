@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NORA | Tasks</title>
+
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                N
+            </div>
+
+            <h2>
+                NORA
+            </h2>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="nav">
+
+            <!-- DASHBOARD -->
+
+            <a
+                    href="/dashboard.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-label">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- TASKS -->
+
+            <a
+                    href="/tasks.html"
+                    class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    ✓
+                </span>
+
+                <span class="nav-label">
+                    Tasks
+                </span>
+
+            </a>
+
+
+            <!-- EXPENSES -->
+
+            <a
+                    href="/expenses.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ₹
+                </span>
+
+                <span class="nav-label">
+                    Expenses
+                </span>
+
+            </a>
+
+
+            <!-- SUBSCRIPTIONS -->
+
+            <a
+                    href="/subscription.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ↻
+                </span>
+
+                <span class="nav-label">
+                    Subscriptions
+                </span>
+
+            </a>
+
+
+            <!-- DOCUMENTS -->
+
+            <a
+                    href="/documents.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ▣
+                </span>
+
+                <span class="nav-label">
+                    Documents
+                </span>
+
+            </a>
+
+
+            <!-- DECISIONS -->
+
+            <a
+                    href="/decisions.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ◇
+                </span>
+
+                <span class="nav-label">
+                    Decisions
+                </span>
+
+            </a>
+
+
+            <!-- INSIGHTS -->
+
+            <a
+                    href="#"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ✦
+                </span>
+
+                <span class="nav-label">
+                    Insights
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- USER -->
+
+        <div class="user-profile">
+
+            <div class="avatar">
+                N
+            </div>
+
+            <div>
+
+                <strong>
+                    Personal Account
+                </strong>
+
+                <small>
+                    NORA User
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="main">
+
+
+        <!-- =====================================
+             TOP BAR
+             ===================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Tasks
+                </h1>
+
+                <p>
+                    Organize and manage your tasks with NORA
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                        id="logoutButton"
+                        class="top-button"
+                        type="button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             TASK SUMMARY
+             ===================================== -->
+
+        <section class="stats-grid">
+
+
+            <!-- TOTAL -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon cyan">
+                    #
+                </div>
+
+                <h3 id="totalTasks">
+                    0
+                </h3>
+
+                <p>
+                    Total Tasks
+                </p>
+
+            </div>
+
+
+            <!-- PENDING -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ○
+                </div>
+
+                <h3 id="pendingTasks">
+                    0
+                </h3>
+
+                <p>
+                    Pending Tasks
+                </p>
+
+            </div>
+
+
+            <!-- COMPLETED -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <h3 id="completedTasks">
+                    0
+                </h3>
+
+                <p>
+                    Completed Tasks
+                </p>
+
+            </div>
+
+
+            <!-- HIGH PRIORITY -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    !
+                </div>
+
+                <h3 id="highPriorityTasks">
+                    0
+                </h3>
+
+                <p>
+                    High Priority
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ADD / EDIT TASK
+             ===================================== -->
+
+        <section class="content-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2 id="formTitle">
+                        Add Task
+                    </h2>
+
+                    <p>
+                        Create a new task and set its priority
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <input
+                        type="hidden"
+                        id="taskId"
+                >
+
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label for="title">
+                        Task Title *
+                    </label>
+
+                    <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            maxlength="255"
+                            placeholder="Enter task title"
+                            required
+                    >
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                            id="description"
+                            name="description"
+                            maxlength="2000"
+                            placeholder="Describe the task..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- PRIORITY -->
+
+                <div class="form-group">
+
+                    <label for="priority">
+                        Priority
+                    </label>
+
+                    <select
+                            id="priority"
+                            name="priority"
+                    >
+
+                        <option value="LOW">
+                            Low
+                        </option>
+
+                        <option value="MEDIUM" selected>
+                            Medium
+                        </option>
+
+                        <option value="HIGH">
+                            High
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DUE DATE -->
+
+                <div class="form-group">
+
+                    <label for="dueDate">
+                        Due Date
+                    </label>
+
+                    <input
+                            type="date"
+                            id="dueDate"
+                            name="dueDate"
+                    >
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="form-actions">
+
+                    <button
+                            type="button"
+                            id="cancelEditButton"
+                            style="display:none;"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                            type="submit"
+                            class="btn-primary"
+                            id="saveTaskButton"
+                    >
+                        Add Task
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =====================================
+             TASK LIST
+             ===================================== -->
+
+        <section class="content-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Your Tasks
+                    </h2>
+
+                    <p>
+                        View, update and manage your tasks
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 FILTERS
+                 ================================= -->
+
+            <div class="filters">
+
+                <button
+                        type="button"
+                        class="filter-btn active"
+                        data-filter="ALL"
+                        onclick="filterTasks('ALL', this)"
+                >
+                    All
+                </button>
+
+
+                <button
+                        type="button"
+                        class="filter-btn"
+                        data-filter="PENDING"
+                        onclick="filterTasks('PENDING', this)"
+                >
+                    Pending
+                </button>
+
+
+                <button
+                        type="button"
+                        class="filter-btn"
+                        data-filter="COMPLETED"
+                        onclick="filterTasks('COMPLETED', this)"
+                >
+                    Completed
+                </button>
+
+
+                <button
+                        type="button"
+                        class="filter-btn"
+                        data-filter="HIGH"
+                        onclick="filterTasks('HIGH', this)"
+                >
+                    High Priority
+                </button>
+
+            </div>
+
+
+            <!-- =================================
+                 LOADING
+                 ================================= -->
+
+            <div
+                    id="loading"
+                    class="loading"
+            >
+                Loading tasks...
+            </div>
+
+
+            <!-- =================================
+                 TASK CONTAINER
+                 ================================= -->
+
+            <div
+                    id="tasksContainer"
+                    class="tasks-container"
+            ></div>
+
+
+            <!-- =================================
+                 EMPTY STATE
+                 ================================= -->
+
+            <div
+                    id="emptyState"
+                    class="empty-state"
+                    style="display:none;"
+            >
+
+                <h3>
+                    No tasks found
+                </h3>
+
+                <p>
+                    Create your first task to start organizing your day with NORA.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+
+<script src="/js/tasks.js"></script>
+
+
+</body>
+
+</html>

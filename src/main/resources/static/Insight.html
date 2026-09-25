@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORA - Insights</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">✦</div>
+
+            <div>
+                <div class="logo-title">NORA</div>
+                <div class="logo-subtitle">
+                    Personal Intelligence
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="/dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span class="nav-label">Dashboard</span>
+            </a>
+
+            <a href="/tasks.html" class="nav-item">
+                <span class="nav-icon">✓</span>
+                <span class="nav-label">Tasks</span>
+            </a>
+
+            <a href="/expenses.html" class="nav-item">
+                <span class="nav-icon">₹</span>
+                <span class="nav-label">Expenses</span>
+            </a>
+
+            <a href="/subscription.html" class="nav-item">
+                <span class="nav-icon">↻</span>
+                <span class="nav-label">Subscriptions</span>
+            </a>
+
+            <a href="/documents.html" class="nav-item">
+                <span class="nav-icon">▣</span>
+                <span class="nav-label">Documents</span>
+            </a>
+
+            <a href="/decisions.html" class="nav-item">
+                <span class="nav-icon">◆</span>
+                <span class="nav-label">Decisions</span>
+            </a>
+
+            <a href="/Insight.html" class="nav-item active">
+                <span class="nav-icon">✦</span>
+                <span class="nav-label">Insights</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutBtn" class="nav-item logout-button">
+                <span class="nav-icon">↪</span>
+                <span class="nav-label">Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Insights</h1>
+
+                <p>
+                    Understand your activity and
+                    discover useful patterns.
+                </p>
+            </div>
+
+            <button id="refreshInsightsBtn" class="btn-primary">
+                ↻ Refresh
+            </button>
+
+        </div>
+
+        <div id="insightsLoading"
+             class="panel"
+             style="display: block;">
+
+            <p>
+                Loading your insights...
+            </p>
+
+        </div>
+
+        <div id="insightsError"
+             class="panel"
+             style="display: none;">
+        </div>
+
+        <div id="emptyInsights"
+             class="panel"
+             style="display: none;">
+
+            <h3>No insights available</h3>
+
+            <p>
+                Add tasks, expenses, subscriptions,
+                or decisions to generate insights.
+            </p>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>Personal Summary</h2>
+
+            <p id="insightSummary">
+                Your personal activity insights
+                will appear here.
+            </p>
+
+        </div>
+
+        <section class="insight-section">
+
+            <div class="section-heading">
+                <h2>Task Insights</h2>
+            </div>
+
+            <div class="cards-grid">
+
+                <div class="card">
+                    <div class="card-label">
+                        Total Tasks
+                    </div>
+
+                    <div id="totalTasks"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Completed Tasks
+                    </div>
+
+                    <div id="completedTasks"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Pending Tasks
+                    </div>
+
+                    <div id="pendingTasks"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        High Priority Tasks
+                    </div>
+
+                    <div id="highPriorityTasks"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Completion Rate
+                    </div>
+
+                    <div id="taskCompletionRate"
+                         class="card-value">
+                        0%
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="insight-section">
+
+            <div class="section-heading">
+                <h2>Expense Insights</h2>
+            </div>
+
+            <div class="cards-grid">
+
+                <div class="card">
+                    <div class="card-label">
+                        Total Expenses
+                    </div>
+
+                    <div id="totalExpenses"
+                         class="card-value">
+                        ₹0.00
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Average Expense
+                    </div>
+
+                    <div id="averageExpense"
+                         class="card-value">
+                        ₹0.00
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Highest Expense
+                    </div>
+
+                    <div id="highestExpense"
+                         class="card-value">
+                        ₹0.00
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Highest Spending Category
+                    </div>
+
+                    <div id="highestSpendingCategory"
+                         class="card-value">
+                        N/A
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Category Amount
+                    </div>
+
+                    <div id="highestCategoryAmount"
+                         class="card-value">
+                        ₹0.00
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="insight-section">
+
+            <div class="section-heading">
+                <h2>Subscription Insights</h2>
+            </div>
+
+            <div class="cards-grid">
+
+                <div class="card">
+                    <div class="card-label">
+                        Active Subscriptions
+                    </div>
+
+                    <div id="activeSubscriptions"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Inactive Subscriptions
+                    </div>
+
+                    <div id="inactiveSubscriptions"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Monthly Cost
+                    </div>
+
+                    <div id="monthlySubscriptionCost"
+                         class="card-value">
+                        ₹0.00
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Yearly Cost
+                    </div>
+
+                    <div id="yearlySubscriptionCost"
+                         class="card-value">
+                        ₹0.00
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="insight-section">
+
+            <div class="section-heading">
+                <h2>Decision Insights</h2>
+            </div>
+
+            <div class="cards-grid">
+
+                <div class="card">
+                    <div class="card-label">
+                        Pending Decisions
+                    </div>
+
+                    <div id="pendingDecisions"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Decided
+                    </div>
+
+                    <div id="decidedDecisions"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Completed
+                    </div>
+
+                    <div id="completedDecisions"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">
+                        Cancelled
+                    </div>
+
+                    <div id="cancelledDecisions"
+                         class="card-value">
+                        0
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="insight-section">
+
+            <div class="section-heading">
+                <h2>✦ Personal Observations</h2>
+            </div>
+
+            <div id="observationsList"
+                 class="panel">
+
+                <p>
+                    Loading observations...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="/js/Insights.js?v=6"></script>
+
+</body>
+
+</html>

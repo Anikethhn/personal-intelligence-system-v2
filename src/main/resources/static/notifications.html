@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NORA - Notifications</title>
+
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+    >
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">N</div>
+
+            <div>
+                <h2>NORA</h2>
+                <span>Personal Intelligence</span>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="/dashboard.html" class="sidebar-link">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/tasks.html" class="sidebar-link">
+                <span>Tasks</span>
+            </a>
+
+            <a href="/expenses.html" class="sidebar-link">
+                <span>Expenses</span>
+            </a>
+
+            <a href="/subscription.html" class="sidebar-link">
+                <span>Subscriptions</span>
+            </a>
+
+            <a href="/documents.html" class="sidebar-link">
+                <span>Documents</span>
+            </a>
+
+            <a href="/decisions.html" class="sidebar-link">
+                <span>Decisions</span>
+            </a>
+
+            <a href="/insights.html" class="sidebar-link">
+                <span>Insights</span>
+            </a>
+
+            <a
+                    href="/notifications.html"
+                    class="sidebar-link active"
+            >
+                <span>Notifications</span>
+
+                <span
+                        id="sidebarNotificationCount"
+                        class="notification-badge"
+                        style="display: none;"
+                >
+                    0
+                </span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                    id="logoutButton"
+                    class="logout-button"
+                    type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>Notifications</h1>
+
+                <p>
+                    Stay updated with important events and reminders.
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                        id="markAllReadButton"
+                        class="secondary-button"
+                        type="button"
+                >
+                    Mark All as Read
+                </button>
+
+                <button
+                        id="refreshNotifications"
+                        class="primary-button"
+                        type="button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+             ================================================= -->
+
+        <section class="notification-summary">
+
+            <div class="notification-summary-card">
+
+                <span class="summary-label">
+                    Total Notifications
+                </span>
+
+                <strong id="totalNotifications">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="notification-summary-card">
+
+                <span class="summary-label">
+                    Unread
+                </span>
+
+                <strong id="unreadNotifications">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="notification-summary-card">
+
+                <span class="summary-label">
+                    High Priority
+                </span>
+
+                <strong id="highPriorityNotifications">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTERS
+             ================================================= -->
+
+        <section class="notification-toolbar">
+
+            <div class="notification-filters">
+
+                <button
+                        class="notification-filter active"
+                        data-filter="ALL"
+                        type="button"
+                >
+                    All
+                </button>
+
+                <button
+                        class="notification-filter"
+                        data-filter="UNREAD"
+                        type="button"
+                >
+                    Unread
+                </button>
+
+                <button
+                        class="notification-filter"
+                        data-filter="READ"
+                        type="button"
+                >
+                    Read
+                </button>
+
+                <button
+                        class="notification-filter"
+                        data-filter="HIGH"
+                        type="button"
+                >
+                    High Priority
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LOADING
+             ================================================= -->
+
+        <div
+                id="loadingMessage"
+                class="loading-message"
+        >
+            Loading notifications...
+        </div>
+
+
+        <!-- =================================================
+             ERROR
+             ================================================= -->
+
+        <div
+                id="errorMessage"
+                class="error-message"
+                style="display: none;"
+        ></div>
+
+
+        <!-- =================================================
+             NOTIFICATIONS
+             ================================================= -->
+
+        <section
+                id="notificationsContainer"
+                class="notifications-container"
+        ></section>
+
+
+        <!-- =================================================
+             EMPTY STATE
+             ================================================= -->
+
+        <div
+                id="emptyState"
+                class="notification-empty"
+                style="display: none;"
+        >
+
+            <div class="empty-icon">
+                ✓
+            </div>
+
+            <h3>No notifications</h3>
+
+            <p>
+                NORA currently has no notifications for you.
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="/js/notifications.js"></script>
+
+</body>
+
+</html>

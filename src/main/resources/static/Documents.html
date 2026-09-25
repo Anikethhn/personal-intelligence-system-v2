@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORA | Documents</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/documents.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <div class="logo">NORA</div>
+            <div class="logo-subtitle">Personal Intelligence</div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="/dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/tasks.html" class="nav-item">
+                <span class="nav-icon">✓</span>
+                <span>Tasks</span>
+            </a>
+
+            <a href="/expenses.html" class="nav-item">
+                <span class="nav-icon">₹</span>
+                <span>Expenses</span>
+            </a>
+
+            <a href="/subscriptions.html" class="nav-item">
+                <span class="nav-icon">↻</span>
+                <span>Subscriptions</span>
+            </a>
+
+            <a href="/Documents.html" class="nav-item active">
+                <span class="nav-icon">▤</span>
+                <span>Documents</span>
+            </a>
+
+            <a href="/decisions.html" class="nav-item">
+                <span class="nav-icon">◆</span>
+                <span>Decisions</span>
+            </a>
+
+            <a href="/Insight.html" class="nav-item">
+                <span class="nav-icon">◈</span>
+                <span>Insights</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+                <div class="user-avatar">N</div>
+
+                <div class="user-info">
+                    <div class="user-name">NORA User</div>
+                    <div class="user-status">Personal Intelligence</div>
+                </div>
+            </div>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button type="button" class="mobile-menu-button" id="mobileMenuButton">
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Documents</h1>
+                    <p>Store, manage and understand your important documents.</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <button
+                        type="button"
+                        class="notification-button"
+                        id="notificationButton"
+                        aria-label="Notifications">
+                    🔔
+                    <span id="notificationCount" class="notification-count">0</span>
+                </button>
+
+                <div class="topbar-user">
+                    <div class="topbar-avatar">N</div>
+                    <span>NORA User</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="documents-page">
+
+            <div class="documents-header">
+
+                <div>
+                    <h2>Your Documents</h2>
+                    <p>
+                        Upload documents securely and let NORA extract useful information from them.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="document-stats">
+
+                <div class="document-stat-card">
+                    <div class="document-stat-icon">▤</div>
+
+                    <div>
+                        <div class="document-stat-label">Total Documents</div>
+                        <div id="totalDocuments" class="document-stat-value">0</div>
+                    </div>
+                </div>
+
+                <div class="document-stat-card">
+                    <div class="document-stat-icon">◉</div>
+
+                    <div>
+                        <div class="document-stat-label">PDF Documents</div>
+                        <div id="pdfDocuments" class="document-stat-value">0</div>
+                    </div>
+                </div>
+
+                <div class="document-stat-card">
+                    <div class="document-stat-icon">▣</div>
+
+                    <div>
+                        <div class="document-stat-label">Word Documents</div>
+                        <div id="wordDocuments" class="document-stat-value">0</div>
+                    </div>
+                </div>
+
+                <div class="document-stat-card">
+                    <div class="document-stat-icon">◇</div>
+
+                    <div>
+                        <div class="document-stat-label">Other Files</div>
+                        <div id="otherDocuments" class="document-stat-value">0</div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="document-upload-section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Upload Document</h2>
+                        <p>
+                            Supported formats: PDF, TXT, DOCX, PNG and JPEG. Maximum size: 10 MB.
+                        </p>
+                    </div>
+                </div>
+
+
+                <form id="documentForm" enctype="multipart/form-data">
+
+                    <div class="upload-grid">
+
+                        <div class="form-group">
+
+                            <label for="file">
+                                Select Document
+                            </label>
+
+                            <div class="file-input-wrapper">
+
+                                <input
+                                        type="file"
+                                        id="file"
+                                        name="file"
+                                        accept=".pdf,.txt,.docx,.png,.jpg,.jpeg"
+                                        required
+                                >
+
+                            </div>
+
+                            <div id="selectedFileName" class="selected-file-name">
+                                No file selected
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="documentTitle">
+                                Document Title
+                            </label>
+
+                            <input
+                                    type="text"
+                                    id="documentTitle"
+                                    name="title"
+                                    placeholder="Enter document title"
+                                    maxlength="255"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full-width">
+
+                            <label for="documentDescription">
+                                Description
+                            </label>
+
+                            <textarea
+                                    id="documentDescription"
+                                    name="description"
+                                    rows="4"
+                                    placeholder="Enter a short description"
+                                    maxlength="500"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="documentError" class="document-error"></div>
+
+
+                    <div class="upload-actions">
+
+                        <button
+                                type="submit"
+                                id="uploadButton"
+                                class="primary-button">
+                            Upload Document
+                        </button>
+
+                        <button
+                                type="button"
+                                id="clearUploadButton"
+                                class="secondary-button">
+                            Clear
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <div class="documents-list-section">
+
+                <div class="section-header documents-list-header">
+
+                    <div>
+                        <h2>My Documents</h2>
+                        <p>
+                            View, analyze or delete your uploaded documents.
+                        </p>
+                    </div>
+
+                    <button
+                            type="button"
+                            id="refreshDocumentsButton"
+                            class="secondary-button">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+
+                <div class="documents-toolbar">
+
+                    <div class="search-wrapper">
+
+                        <input
+                                type="text"
+                                id="documentSearch"
+                                placeholder="Search documents..."
+                                autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div class="filter-wrapper">
+
+                        <select id="documentFilter">
+
+                            <option value="all">All Documents</option>
+                            <option value="pdf">PDF</option>
+                            <option value="txt">Text</option>
+                            <option value="docx">Word</option>
+                            <option value="image">Images</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div id="loading" class="documents-loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading documents...</p>
+                </div>
+
+
+                <div id="documentsContainer" class="documents-container"></div>
+
+
+                <div id="emptyState" class="documents-empty-state">
+
+                    <div class="empty-state-icon">▤</div>
+
+                    <h3>No Documents Found</h3>
+
+                    <p>
+                        Upload your first document to start building your personal document intelligence.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div id="documentIntelligenceModal" class="document-modal">
+
+    <div class="document-modal-content">
+
+        <div class="document-modal-header">
+
+            <div>
+                <h2 id="intelligenceTitle">
+                    Document Intelligence
+                </h2>
+
+                <p>
+                    Information extracted by NORA
+                </p>
+            </div>
+
+            <button
+                    type="button"
+                    id="closeIntelligenceButton"
+                    class="document-modal-close"
+                    aria-label="Close">
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="intelligenceBody" class="document-details">
+
+            <div class="document-detail-row">
+
+                <div class="document-detail-label">
+                    Status
+                </div>
+
+                <div class="document-detail-value">
+                    Loading intelligence...
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="notificationPanel" class="notification-panel">
+
+    <div class="notification-panel-header">
+
+        <div>
+            <h3>Notifications</h3>
+        </div>
+
+        <button
+                type="button"
+                id="closeNotificationPanel"
+                class="notification-close">
+            ×
+        </button>
+
+    </div>
+
+    <div id="notificationList" class="notification-list">
+
+        <div class="notification-loading">
+            Loading notifications...
+        </div>
+
+    </div>
+
+    <div class="notification-panel-footer">
+
+        <button
+                type="button"
+                id="markAllNotificationsRead"
+                class="secondary-button">
+            Mark All as Read
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="toastContainer" class="toast-container"></div>
+
+
+<script src="/js/notification-bell.js"></script>
+<script src="/js/Documents.js"></script>
+
+</body>
+</html>

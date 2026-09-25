@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NORA | Decisions</title>
+
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                N
+            </div>
+
+            <h2>
+                NORA
+            </h2>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="nav">
+
+            <!-- DASHBOARD -->
+
+            <a
+                    href="/dashboard.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-label">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- TASKS -->
+
+            <a
+                    href="/tasks.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ✓
+                </span>
+
+                <span class="nav-label">
+                    Tasks
+                </span>
+
+            </a>
+
+
+            <!-- EXPENSES -->
+
+            <a
+                    href="/expenses.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ₹
+                </span>
+
+                <span class="nav-label">
+                    Expenses
+                </span>
+
+            </a>
+
+
+            <!-- SUBSCRIPTIONS -->
+
+            <a
+                    href="/subscription.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ↻
+                </span>
+
+                <span class="nav-label">
+                    Subscriptions
+                </span>
+
+            </a>
+
+
+            <!-- DOCUMENTS -->
+
+            <a
+                    href="/documents.html"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ▣
+                </span>
+
+                <span class="nav-label">
+                    Documents
+                </span>
+
+            </a>
+
+
+            <!-- DECISIONS -->
+
+            <a
+                    href="/decisions.html"
+                    class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    ◇
+                </span>
+
+                <span class="nav-label">
+                    Decisions
+                </span>
+
+            </a>
+
+
+            <!-- INSIGHTS -->
+
+            <a
+                    href="#"
+                    class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ✦
+                </span>
+
+                <span class="nav-label">
+                    Insights
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- USER -->
+
+        <div class="user-profile">
+
+            <div class="avatar">
+                N
+            </div>
+
+            <div>
+
+                <strong>
+                    Personal Account
+                </strong>
+
+                <small>
+                    NORA User
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Decisions
+                </h1>
+
+                <p>
+                    Record, evaluate and track your important decisions.
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                        id="logoutButton"
+                        class="top-button"
+                        type="button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             DECISION FILTERS
+             ========================================= -->
+
+        <section class="content-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Decision Management
+                    </h2>
+
+                    <p>
+                        Organize your decisions by their current status.
+                    </p>
+
+                </div>
+
+
+                <button
+                        class="btn-primary"
+                        type="button"
+                        onclick="openDecisionModal()"
+                >
+                    + New Decision
+                </button>
+
+            </div>
+
+
+            <div class="filters">
+
+                <button
+                        class="filter-btn active"
+                        data-status="ALL"
+                        onclick="filterDecisions('ALL', this)"
+                >
+                    All
+                </button>
+
+
+                <button
+                        class="filter-btn"
+                        data-status="PENDING"
+                        onclick="filterDecisions('PENDING', this)"
+                >
+                    Pending
+                </button>
+
+
+                <button
+                        class="filter-btn"
+                        data-status="DECIDED"
+                        onclick="filterDecisions('DECIDED', this)"
+                >
+                    Decided
+                </button>
+
+
+                <button
+                        class="filter-btn"
+                        data-status="COMPLETED"
+                        onclick="filterDecisions('COMPLETED', this)"
+                >
+                    Completed
+                </button>
+
+
+                <button
+                        class="filter-btn"
+                        data-status="CANCELLED"
+                        onclick="filterDecisions('CANCELLED', this)"
+                >
+                    Cancelled
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             LOADING
+             ========================================= -->
+
+        <div
+                id="loading"
+                class="loading"
+        >
+            Loading decisions...
+        </div>
+
+
+        <!-- =========================================
+             DECISION GRID
+             ========================================= -->
+
+        <section
+                id="decisionsGrid"
+                class="decisions-grid"
+        ></section>
+
+
+        <!-- =========================================
+             EMPTY STATE
+             ========================================= -->
+
+        <section
+                id="emptyState"
+                class="empty-state"
+                style="display:none;"
+        >
+
+            <h3>
+                No decisions found
+            </h3>
+
+            <p>
+                Create your first decision to start tracking it with NORA.
+            </p>
+
+            <button
+                    class="btn-primary"
+                    type="button"
+                    onclick="openDecisionModal()"
+            >
+                + New Decision
+            </button>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     NEW / EDIT DECISION MODAL
+     ========================================= -->
+
+<div
+        id="decisionModal"
+        class="modal"
+>
+
+    <div class="modal-content">
+
+
+        <!-- MODAL HEADER -->
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                New Decision
+            </h2>
+
+            <button
+                    class="close-btn"
+                    type="button"
+                    onclick="closeDecisionModal()"
+                    aria-label="Close"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <!-- =====================================
+             DECISION FORM
+             ===================================== -->
+
+        <form id="decisionForm">
+
+
+            <!-- HIDDEN ID -->
+
+            <input
+                    type="hidden"
+                    id="decisionId"
+            >
+
+
+            <!-- TITLE -->
+
+            <div class="form-group">
+
+                <label for="title">
+                    Decision Title *
+                </label>
+
+                <input
+                        type="text"
+                        id="title"
+                        maxlength="255"
+                        placeholder="Example: Choose Internship"
+                        required
+                >
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                        id="description"
+                        maxlength="2000"
+                        placeholder="Describe what you need to decide and why..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- OPTIONS -->
+
+            <div class="form-group">
+
+                <label for="options">
+                    Options
+                </label>
+
+                <textarea
+                        id="options"
+                        maxlength="2000"
+                        placeholder="Option 1&#10;Option 2&#10;Option 3"
+                ></textarea>
+
+            </div>
+
+
+            <!-- PROS -->
+
+            <div class="form-group">
+
+                <label for="pros">
+                    Pros
+                </label>
+
+                <textarea
+                        id="pros"
+                        maxlength="2000"
+                        placeholder="Advantages / benefits..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- CONS -->
+
+            <div class="form-group">
+
+                <label for="cons">
+                    Cons
+                </label>
+
+                <textarea
+                        id="cons"
+                        maxlength="2000"
+                        placeholder="Disadvantages / risks..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label for="status">
+                    Status
+                </label>
+
+                <select id="status">
+
+                    <option value="PENDING">
+                        Pending
+                    </option>
+
+                    <option value="DECIDED">
+                        Decided
+                    </option>
+
+                    <option value="COMPLETED">
+                        Completed
+                    </option>
+
+                    <option value="CANCELLED">
+                        Cancelled
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- CHOSEN OPTION -->
+
+            <div class="form-group">
+
+                <label for="chosenOption">
+                    Chosen Option
+                </label>
+
+                <textarea
+                        id="chosenOption"
+                        maxlength="2000"
+                        placeholder="Which option did you choose?"
+                ></textarea>
+
+            </div>
+
+
+            <!-- OUTCOME -->
+
+            <div class="form-group">
+
+                <label for="outcome">
+                    Outcome
+                </label>
+
+                <textarea
+                        id="outcome"
+                        maxlength="2000"
+                        placeholder="What happened after the decision?"
+                ></textarea>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="form-actions">
+
+                <button
+                        type="button"
+                        onclick="closeDecisionModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                        type="submit"
+                        class="btn-primary"
+                >
+                    Save Decision
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+
+<script src="/js/decisions.js"></script>
+
+
+</body>
+
+</html>
